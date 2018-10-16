@@ -121,7 +121,7 @@
     <link href="http://yoursite.com/2018/10/12/test1/"/>
     <id>http://yoursite.com/2018/10/12/test1/</id>
     <published>2018-10-12T02:09:05.000Z</published>
-    <updated>2018-10-16T01:43:02.440Z</updated>
+    <updated>2018-10-16T06:23:38.766Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>曾经在工作上对 vue 路由权限管理这方面有过研究，这几天又看到了几篇相关的文章，再加上昨天电面中又再一次提及到，就索性整理了一下自己的一些看法，希望对大家有帮助。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>大体上实现的思路很简单，先上图：</p><p>无非是将路由配置按用户类型分割为 用户路由 和 基本路由，不同的用户类型可能存在不同的 用户路由，具体依赖实际业务。</p>]]></content>
     
