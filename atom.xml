@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>新开普完美校园</title>
+  
+  <subtitle>前端h5小分队</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-10-16T01:43:02.441Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>BXL</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>百度统计使用方法</title>
+    <link href="http://yoursite.com/2018/10/15/%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/10/15/百度统计使用方法/</id>
+    <published>2018-10-15T09:12:02.000Z</published>
+    <updated>2018-10-16T01:43:02.441Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h1><h2 id="异步分析代码（推荐）"><a href="#异步分析代码（推荐）" class="headerlink" title="异步分析代码（推荐）"></a>异步分析代码（推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; </span><br><span class="line">    var _hmt = _hmt || []; </span><br><span class="line">    (function() &#123; </span><br><span class="line">    var hm = document.createElement(“script”); </span><br><span class="line">    hm.src = “//hm.baidu.com/hm.js?XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX”; </span><br><span class="line">    var s = document.getElementsByTagName(“script”)[0]; </span><br><span class="line">    s.parentNode.insertBefore(hm, s); </span><br><span class="line">    &#125;)(); </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="百度统计提供哪些数据报告"><a href="#百度统计提供哪些数据报告" class="headerlink" title="百度统计提供哪些数据报告"></a>百度统计提供哪些数据报告</h2><ol><li>流量分析 - 多少人来过</li><li>流量来源 - 访客途径</li><li>推广效果</li><li>网站访问</li><li>访客特征</li><li>转化情况</li><li>网站诊断</li></ol><h2 id="trackEvent说明"><a href="#trackEvent说明" class="headerlink" title="trackEvent说明"></a>trackEvent说明</h2><p><code>_hmt.push([‘_trackEvent’, category, action, opt_label,opt_value]);</code></p><p><strong>参数</strong></p><blockquote><table><thead><tr><th>名称</th><th>必选/可选</th><th>类型</th><th>功能</th></tr></thead><tbody><tr><td>category</td><td>必选</td><td>String</td><td>要监控的目标的类型名称</td></tr><tr><td>action</td><td>必选</td><td>String</td><td>用户跟网页进行交互的动作名称</td></tr><tr><td>opt_label</td><td>可选</td><td>String</td><td>事件的一些额外信息</td></tr><tr><td>opt_value</td><td>可选</td><td>Number</td><td>跟事件相关的数值</td></tr><tr><td></td><td></td><td></td></tr></tbody></table></blockquote><p><strong>使用限制和常见问题</strong></p><ol><li><p>百度统计目前针对_trackevent API 有多样性的限制，即在部署_trackevent API时，参数的多样性乘积不能超过10000，否则系统会自动抛弃超标的数据。</p><blockquote><p>当您的多样性超标后，在报告中会出现提示，请修改代码，使得您代码中传递的参数符合要求。</p></blockquote></li><li><p>“动作”参数有时也可以用来记录一些额外信息。比如当同时提供多种格式的文档供用户下载时，就可以用”动作”参数来保存文档格式，如”PDF”、”TXT”等等。</p><blockquote><p>_hmt.push([‘_trackEvent’, ‘document’, ‘PDF’, ‘Market Requirements<br>Document’]);</p></blockquote></li></ol><h2 id="什么是转化及统计支持的转化类型"><a href="#什么是转化及统计支持的转化类型" class="headerlink" title="什么是转化及统计支持的转化类型"></a>什么是转化及统计支持的转化类型</h2><p>转化是指用户在您网站上完成的某项给您带来收益的活动，如购买、注册、留言咨询等，当用户达成一次您设定的目标，算作完成一次转化。提高转化率是提高网站投资回报率的最快方法，转化率提升1%意味着网站的运营更高效，会给公司的情况带来戏剧性的变化。</p><p>百度统计可监控的转化类型包括页面转化、事件转化、时长转化、页数转化。</p><h2 id="trackPageview说明"><a href="#trackPageview说明" class="headerlink" title="trackPageview说明"></a>trackPageview说明</h2><p>使用场景：用于发送某个指定URL的PV统计请求</p><ol><li>AJAX页面的PV统计 （纯AJAX站点，所有页面都使用JS生成和切换）</li><li>对于弹窗浮层等希望统计的模块（如，希望把对JS生成的浮动层的访问记入站点PV进行统计），可以利用trackpageview赋予URL</li><li>您可以利用trackpageview改写当前页面在统计系统中的URL，需要与setAutoPageview结合。更多详情请查看举例中的第三个例子</li></ol><p><code>_hmt.push([&#39;_trackPageview&#39;, pageURL]);</code></p><blockquote><p>pageURL：指定要统计PV的页面URL。此项必选，必须是以”/”（斜杠）开头的相对路径</p></blockquote><h2 id="统计规则"><a href="#统计规则" class="headerlink" title="统计规则"></a>统计规则</h2><p>统计规则指对网站流量数据的分类或者过滤方法。如果您对获取的流量数据有特殊需求，一般可以通过设置统计规则的方式来实现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;百度统计&quot;&gt;&lt;a href=&quot;#百度统计&quot; class=&quot;headerlink&quot; title=&quot;百度统计&quot;&gt;&lt;/a&gt;百度统计&lt;/h1&gt;&lt;h2 id=&quot;异步分析代码（推荐）&quot;&gt;&lt;a href=&quot;#异步分析代码（推荐）&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+    
+      <category term="百度统计" scheme="http://yoursite.com/tags/%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/10/15/hello-world/"/>
+    <id>http://yoursite.com/2018/10/15/hello-world/</id>
+    <published>2018-10-15T07:20:36.604Z</published>
+    <updated>2018-10-15T07:20:36.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test2</title>
+    <link href="http://yoursite.com/2018/10/12/test2/"/>
+    <id>http://yoursite.com/2018/10/12/test2/</id>
+    <published>2018-10-12T02:16:10.000Z</published>
+    <updated>2018-10-15T07:20:36.606Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test3</title>
+    <link href="http://yoursite.com/2018/10/12/test3/"/>
+    <id>http://yoursite.com/2018/10/12/test3/</id>
+    <published>2018-10-12T02:16:05.000Z</published>
+    <updated>2018-10-15T07:20:36.606Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test4</title>
+    <link href="http://yoursite.com/2018/10/12/test4/"/>
+    <id>http://yoursite.com/2018/10/12/test4/</id>
+    <published>2018-10-12T02:16:01.000Z</published>
+    <updated>2018-10-15T07:20:36.607Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test5</title>
+    <link href="http://yoursite.com/2018/10/12/test5/"/>
+    <id>http://yoursite.com/2018/10/12/test5/</id>
+    <published>2018-10-12T02:15:42.000Z</published>
+    <updated>2018-10-15T07:20:36.608Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test1</title>
+    <link href="http://yoursite.com/2018/10/12/test1/"/>
+    <id>http://yoursite.com/2018/10/12/test1/</id>
+    <published>2018-10-12T02:09:05.000Z</published>
+    <updated>2018-10-16T01:43:02.440Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>曾经在工作上对 vue 路由权限管理这方面有过研究，这几天又看到了几篇相关的文章，再加上昨天电面中又再一次提及到，就索性整理了一下自己的一些看法，希望对大家有帮助。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>大体上实现的思路很简单，先上图：</p><p>无非是将路由配置按用户类型分割为 用户路由 和 基本路由，不同的用户类型可能存在不同的 用户路由，具体依赖实际业务。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;曾经在工作上对 vue 路由权限管理这方面有过研究，这几天又看到了几篇相关的文章，再加上昨天电面中又再一次提及到，就索性整理了一下自己的一些
+      
+    
+    </summary>
+    
+    
+      <category term="完美校园测试" scheme="http://yoursite.com/tags/%E5%AE%8C%E7%BE%8E%E6%A0%A1%E5%9B%AD%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我是测试添加标签的文章</title>
+    <link href="http://yoursite.com/2018/10/11/%E6%88%91%E6%98%AF%E6%B5%8B%E8%AF%95%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE%E7%9A%84%E6%96%87%E7%AB%A0/"/>
+    <id>http://yoursite.com/2018/10/11/我是测试添加标签的文章/</id>
+    <published>2018-10-11T02:15:20.000Z</published>
+    <updated>2018-10-15T07:20:36.610Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="ceshi,测试" scheme="http://yoursite.com/categories/ceshi-%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我会出现在哪一页</title>
+    <link href="http://yoursite.com/2018/10/10/%E6%88%91%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%93%AA%E4%B8%80%E9%A1%B5/"/>
+    <id>http://yoursite.com/2018/10/10/我会出现在哪一页/</id>
+    <published>2018-10-10T09:13:13.000Z</published>
+    <updated>2018-10-15T07:20:36.609Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>揭秘css的黑科技</title>
+    <link href="http://yoursite.com/2018/10/10/%E6%8F%AD%E7%A7%98css%E7%9A%84%E9%BB%91%E7%A7%91%E6%8A%80/"/>
+    <id>http://yoursite.com/2018/10/10/揭秘css的黑科技/</id>
+    <published>2018-10-10T02:30:23.000Z</published>
+    <updated>2018-10-15T07:20:36.611Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="css技巧"><a href="#css技巧" class="headerlink" title="css技巧"></a>css技巧</h5><ul><li><h6 id="垂直居中设置"><a href="#垂直居中设置" class="headerlink" title="垂直居中设置"></a>垂直居中设置</h6></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;css技巧&quot;&gt;&lt;a href=&quot;#css技巧&quot; class=&quot;headerlink&quot; title=&quot;css技巧&quot;&gt;&lt;/a&gt;css技巧&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h6 id=&quot;垂直居中设置&quot;&gt;&lt;a href=&quot;#垂直居中设置&quot; class=&quot;headerlink&quot;
+      
+    
+    </summary>
+    
+      <category term="css,html" scheme="http://yoursite.com/categories/css-html/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于图片上传的小技巧</title>
+    <link href="http://yoursite.com/2018/10/10/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2018/10/10/关于图片上传的小技巧/</id>
+    <published>2018-10-10T02:30:03.000Z</published>
+    <updated>2018-10-15T07:20:36.609Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你好，Hexo</title>
+    <link href="http://yoursite.com/2018/10/10/%E4%BD%A0%E5%A5%BD%EF%BC%8CHexo/"/>
+    <id>http://yoursite.com/2018/10/10/你好，Hexo/</id>
+    <published>2018-10-10T01:09:54.000Z</published>
+    <updated>2018-10-15T07:20:36.608Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>content</p><footer><strong>[author[</strong><cite>source]] [link] [source_link_title]</cite></footer></blockquote><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;Hello World!&apos;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;&lt;p&gt;content&lt;/p&gt;
+&lt;footer&gt;&lt;strong&gt;[author[&lt;/strong&gt;&lt;cite&gt;source]] [link] [source_link_title]&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;fig
+      
+    
+    </summary>
+    
+      <category term="test,created" scheme="http://yoursite.com/categories/test-created/"/>
+    
+    
+      <category term="标签描述" scheme="http://yoursite.com/tags/%E6%A0%87%E7%AD%BE%E6%8F%8F%E8%BF%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模板</title>
+    <link href="http://yoursite.com/2018/09/09/%E6%A8%A1%E6%9D%BF/"/>
+    <id>http://yoursite.com/2018/09/09/模板/</id>
+    <published>2018-09-09T06:15:49.000Z</published>
+    <updated>2018-10-15T07:20:36.612Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
